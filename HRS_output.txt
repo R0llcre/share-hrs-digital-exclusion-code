@@ -1,0 +1,48 @@
+== HRS STROBE flow ==
+  2018 internet item 16,979 -> outcome nonmiss 14,156 -> covariate-complete (analytic) 13,650
+== HRS need-adjustment ladder (household-clustered; covariates 2018, outcome 2020) ==
+  M0 age,sex,edu                 RR 0.914 [0.900,0.929] N=13,650
+  M1 +SRH,chronic,depression     RR 0.902 [0.888,0.917] N=13,650
+  M2 +function (any ADL/IADL)    RR 0.901 [0.887,0.916] N=13,650
+  M3 +baseline utilisation       RR 0.927 [0.913,0.942] N=13,639
+== HRS focal (M2, +function) RR ==
+  unweighted, household-clustered : RR 0.901 [0.887,0.916]  (target: analytic sample)
+  design-weighted (r15wtresp)+strata/PSU : RR 0.908 [0.890,0.927] (N=12,902; target: US community pop >=50)
+== HRS adjusted absolute risk (M2) ==
+  logistic-standardised risks: users 91.9% vs non-users 82.2%
+  adjusted RD (LPM, household-cluster-robust): -9.2pp [-10.5, -7.8]
+== HRS Table 1 (analytic sample) ==
+  users: N=8677 age=64.2(9.9) female=60% eduyrs=14.1 srh=2.66 chronic=2.0 cesd=1.21 anyADLIADL%=14 baseDocv2018%=93
+  non-users: N=4973 age=69.7(11.2) female=60% eduyrs=11.1 srh=3.20 chronic=2.6 cesd=1.77 anyADLIADL%=31 baseDocv2018%=83
+  SMD age=0.52 edu=-0.98 srh=0.55 chronic=0.42 cesd=0.28
+  SMD (binary rows) female=-0.01 anyADLIADL=0.40 baseDocv2018=-0.31
+  missing% sphus=0.1 chronic=0.0 cesd=3.9 butil=0.7 func=0.2
+== HRS secondary: delayed needed care (RCOVW579, 2020 COVID module) ==
+  Item RCOVW579: 'Since March 2020, any time you needed care but DELAYED getting it?' (Yes/No)
+  COVID-module weight in H20COV_R: None (none ships in this file -> unweighted; COVID half-sample)
+  N=8,707; raw delayed-care: users 34.6% (n=5593) vs non-users 24.5% (n=3114)
+  adjusted RR 0.786 [0.726,0.851]; item missingness within COVID subsample 36.1% (the larger non-response is the COVID half-sample design, not item missingness)
+  NOTE: denominator-dependent self-report; cannot distinguish lower need, fewer opportunities to
+        experience delay, reporting differences, or better access. Secondary, cautious indicator only.
+== HRS before/during difference-in-differences ==
+  PRE  r14doctor (2018): RR 0.908 [0.895,0.922]
+  DURING r15doctor (2020): RR 0.902 [0.887,0.916]
+  period contrast (2018 vs 2020, fully-interacted): ratio-of-RR 0.993 [0.975,1.012] p=0.47
+  => no significant widening: the HRS broad-contact gap was already present in 2018 (pre-existing gradient,
+     and the 2020 measure spans the pre-pandemic period, so HRS cannot test pandemic-specific widening).
+== HRS multi-wave pre-trend (2018 exposure -> any doctor visit) ==
+  r12 2014 (pre)     RR 0.930 [0.917,0.944] N=12,231
+  r13 2016 (pre)     RR 0.918 [0.907,0.931] N=15,748
+  r14 2018 (pre)     RR 0.914 [0.901,0.926] N=16,231
+  r15 2020 (during)  RR 0.902 [0.888,0.917] N=13,650
+  => HRS gap present since 2014 and stable through 2020 (pre-existing gradient; no within-pandemic jump).
+== HRS extended-confounder sensitivity (focal vs +income+wealth+race+hispanic+insurance+living-alone+cognition) ==
+  focal need-set                                       RR 0.902 [0.888,0.917] N=13,650
+  +income+wealth+race+hispanic+insurance+alone+cognition RR 0.933 [0.917,0.949] N=12,634
+  => modest ATTENUATION toward the null but remains significant: not merely a proxy for SES/race/cognition/isolation.
+== HRS 65+ sensitivity (focal M2) ==
+  50+ RR 0.901; 65+ RR 0.924 [0.907,0.940] N=6,953
+
+===== TRACEABILITY (HRS) =====
+  raw 2020 doctor visit by exposure: users 92.3% vs non-users 81.1%  (N=13,650)
+  HRS focal RR 0.901 -> E-value 1.459; CI limit closest to null 0.916 -> E-value 1.409

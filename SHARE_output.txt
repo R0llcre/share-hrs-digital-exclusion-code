@@ -1,0 +1,133 @@
+== SHARE STROBE flow ==
+  W8 53,695 -> age>=50 53,313 -> ex-Israel 51,898 -> exposure 51,717 -> in SCS2 31,357 -> outcome 31,320 -> analytic 30,244
+  countries in analytic sample: 26
+== SHARE need-adjustment ladder (caq120 SCS2; N=30,244) ==
+  M0 age,sex,edu,countryFE         RR 0.905 [0.868,0.943]
+  M1 +SRH,chronic,depression       RR 0.882 [0.844,0.922]
+  M2 +ADL,IADL (function; focal)   RR 0.887 [0.848,0.928]
+  M3 +baseline utilisation         RR 0.899 [0.860,0.940]
+== SHARE adjusted absolute risk (M2) ==
+  logistic-standardised risks: users 60.6% vs non-users 53.8%
+  adjusted RD (LPM, country-cluster-robust): -6.8pp [-8.8, -4.8]
+== SHARE selection/weighting sensitivity (M2) ==
+  unweighted M2 RR 0.887; SCS2-calibrated-weighted RR 0.867 [0.780,0.965] (N=30,242)
+  IPW for SCS2 participation: RR 0.890 [0.855,0.926] (N=30,244)
+== SHARE pre-pandemic exposure-timing sensitivity (focal M2) ==
+  excl W8 interviews from Mar 2020 onward: RR 0.890 [0.851,0.930] N=27,952 (dropped 2,292)
+== SHARE multimorbidity-stratified absolute RD (M2 standardisation) ==
+  multimorbid (2+)   RD -4.8pp (users 65.3% vs non-users 60.5%) N=15,968
+  not multimorbid    RD -8.9pp (users 54.9% vs non-users 46.0%) N=14,276
+== SHARE pre-specified effect modification ==
+  multimorbidity x exposure  p = 0.000
+  low-education x exposure   p = 0.493
+  health-literacy x exposure p = 0.442
+  Low health literacy    RR 0.873 [0.780,0.977]  N=2,287
+  Higher health literacy RR 0.889 [0.851,0.929]  N=27,921
+== SHARE subgroups (Figure 3 / need gradient) ==
+  Age 50-64          RR 0.819 [0.753,0.891]  N=8,587
+  Age 65-79          RR 0.905 [0.863,0.949]  N=16,518
+  Age 80+            RR 0.913 [0.865,0.964]  N=5,139
+  Women              RR 0.898 [0.853,0.944]  N=17,745
+  Men                RR 0.876 [0.840,0.914]  N=12,499
+  Low education      RR 0.889 [0.821,0.963]  N=9,541
+  High education     RR 0.896 [0.845,0.950]  N=7,049
+  Not multimorbid    RR 0.827 [0.769,0.889]  N=14,276
+  Multimorbid        RR 0.927 [0.892,0.964]  N=15,968
+  No ADL limitation  RR 0.888 [0.847,0.930]  N=27,400
+  Any ADL limitation RR 0.889 [0.836,0.944]  N=2,844
+== SHARE between-country heterogeneity ==
+  26 countries: Cochran Q=28.8 df=25 p=0.274 I2=13%; RR range 0.65-1.17, 23/26 below 1
+  random-effects (DerSimonian-Laird) pooled RR 0.889 [0.852,0.929] (tau^2=0.0016)
+  per-country RRs (95% CI), country code / N:
+    country  11 N=1,144  RR 0.939 [0.802,1.099]
+    country  12 N=1,711  RR 0.955 [0.835,1.092]
+    country  13 N=  805  RR 0.861 [0.648,1.144]
+    country  14 N=  447  RR 1.166 [0.757,1.796]
+    country  15 N=  893  RR 0.943 [0.769,1.156]
+    country  16 N=1,662  RR 0.651 [0.533,0.795]
+    country  17 N=1,521  RR 0.954 [0.822,1.106]
+    country  18 N=1,166  RR 0.775 [0.569,1.056]
+    country  19 N=2,480  RR 0.827 [0.708,0.966]
+    country  20 N=1,534  RR 0.881 [0.736,1.054]
+    country  23 N=1,513  RR 0.957 [0.812,1.129]
+    country  28 N=1,589  RR 0.944 [0.829,1.076]
+    country  29 N=1,515  RR 0.854 [0.728,1.001]
+    country  31 N=  644  RR 0.725 [0.535,0.981]
+    country  32 N=  430  RR 0.771 [0.545,1.091]
+    country  34 N=1,917  RR 0.820 [0.701,0.959]
+    country  35 N=2,384  RR 0.871 [0.734,1.033]
+    country  47 N=1,028  RR 0.786 [0.615,1.004]
+    country  48 N=1,047  RR 0.945 [0.757,1.179]
+    country  51 N=  547  RR 0.984 [0.681,1.422]
+    country  53 N=  296  RR 1.145 [0.678,1.936]
+    country  55 N=  887  RR 0.911 [0.711,1.167]
+    country  57 N=  629  RR 0.957 [0.714,1.282]
+    country  59 N=  587  RR 0.755 [0.580,0.982]
+    country  61 N=1,073  RR 1.115 [0.893,1.392]
+    country  63 N=  795  RR 0.908 [0.703,1.172]
+== SHARE temporal ==
+  SCS1 (2020, caq020): RR 0.853 [0.813,0.896] N=33,092
+  SCS2 (2021, caq120): RR 0.887 [0.848,0.928] N=30,244
+== SHARE before/during difference-in-differences ==
+  PRE  any doctor visit (~91%): RR 0.968 [0.958,0.977]
+  PRE  4+ visits (~61%, room) : RR 0.941 [0.921,0.962]
+  DURING in-person (SCS2)     : RR 0.887 [0.848,0.928]
+  period contrast, any-visit baseline (fully-interacted, absorbs country x period): ratio-of-RR 0.917 [0.875,0.960] p=2.4e-04
+  period contrast, 4+-visit baseline : ratio-of-RR 0.942 [0.901,0.986] p=9.5e-03
+  => ratio of during- to before-pandemic adjusted RR; <1 = larger non-user gap in the pandemic measure (descriptive, not causal).
+== SHARE Table 1 (analytic sample) ==
+  users: N=17315 age=67.6(7.8) female=57% eduLO%=18 srh=2.94 eurod=2.02 mm%=46 adl=0.11 anyADLIADL%=12 baseDocv=6.5
+  non-users: N=12929 age=74.0(8.9) female=61% eduLO%=50 srh=3.50 eurod=2.76 mm%=62 adl=0.28 anyADLIADL%=28 baseDocv=7.3
+  SMD age=0.77 sphus=0.59 chronic=0.37 eurod=0.33 adl=0.24
+  SMD (binary + count rows) female=0.08 edu-lo=0.71 multimorbid=0.31 anyADLIADL=0.40 baseDocv=0.08
+== SHARE multi-wave pre-trend (period x internet interaction, not a causal DiD) ==
+  W6 2015 (pre)                    RR 0.973 [0.963,0.984] N=21,116
+  W8 2019 (pre)                    RR 0.968 [0.958,0.977] N=30,244
+  SCS2 2021 (during, in-person)    RR 0.887 [0.848,0.928] N=30,244
+  => gap small and STABLE across two pre-pandemic waves, larger in the pandemic in-person measure.
+== SHARE total contact vs modality (during) ==
+  in-person                          RR 0.887 [0.848,0.928] N=30,244
+  remote (>=1)                       RR 0.901 [0.863,0.940] N=29,820
+  ANY contact (in-person OR remote)  RR 0.931 [0.911,0.952] N=29,990
+  => total-contact gap real but smaller than in-person; remote only partially offsets (net deficit).
+  adj-std %% in-person  users 60.6 / non-users 53.8  RD -6.8pp
+  adj-std %% remote     users 40.6 / non-users 36.5  RD -4.2pp
+  adj-std %% any        users 77.6 / non-users 72.2  RD -5.4pp
+== SHARE attrition: SCS2-included vs not-included (W8 exposure-known) ==
+  included: N=30,244 age=70.3 non-user%=43 edu-lo%=32 SRH=3.18 multimorbid%=53
+  not included: N=21,473 age=70.1 non-user%=42 edu-lo%=33 SRH=3.25 multimorbid%=52
+== SHARE extended-confounder sensitivity (focal need-set vs +income+wealth+living-alone) ==
+  focal need-set (N=29,888)            RR 0.889 [0.851,0.930]
+  +income+wealth (near-full sample)         RR 0.903 [0.866,0.942]
+  +income+wealth+living-arrangement (dn014-limited, N=8,332) RR 0.941 [0.879,1.007]
+  NOTE: the dn014-based row is a low-coverage (~29%) legacy sensitivity, superseded by the
+        A2 upgraded extended model below (living alone from household size, ~full coverage);
+        the manuscript reports the A2 model.
+  included vs excluded (income/wealth available): focal RR 0.889 vs near-identical to full -> not a selected subsample.
+  => association persists after adding income and wealth on nearly the full sample; SES explains only a small part.
+== SHARE 65+ sensitivity (focal M2) ==
+  50+ RR 0.887; 65+ RR 0.907 [0.868,0.948] N=21,657
+
+===== REVISION-2 ANALYSES =====
+  A2 upgraded extended (+income+wealth+lives-alone[full]+cognition+rurality): RR 0.919 [0.885,0.955] N=28,485
+     focal M2 on the SAME sample (for comparison):                            RR 0.889 [0.851,0.929]
+     coverage: lives-alone(full) 24%% prevalence, hhsize present 100%%; rurality present 96%%; cognition present 99%%
+  A3 visit-threshold period contrasts (ratio-of-RR; pandemic in-person vs pre-pandemic >=k visits):
+     >= 1 visits (pre prevalence 91%%): ratio-of-RR 0.917 [0.875,0.960] p=2.4e-04
+     >= 2 visits (pre prevalence 82%%): ratio-of-RR 0.922 [0.882,0.965] p=4.0e-04
+     >= 3 visits (pre prevalence 70%%): ratio-of-RR 0.943 [0.907,0.980] p=3.1e-03
+     >= 4 visits (pre prevalence 61%%): ratio-of-RR 0.942 [0.901,0.986] p=9.5e-03
+     >= 5 visits (pre prevalence 50%%): ratio-of-RR 0.949 [0.905,0.995] p=3.1e-02
+  A4 secondary pandemic access/unmet-care outcomes (focal M2, RR non-users vs users; self-report, denominator-dependent):
+     forwent any treatment        RR 0.797 [0.729,0.872] raw u/n 8.8/8.0%% N=30,229
+     appointment postponed (COVID) RR 0.785 [0.718,0.858] raw u/n 13.7/10.8%% N=30,212
+     appointment denied           RR 0.728 [0.651,0.815] raw u/n 4.8/3.9%% N=30,226
+     hospital treatment           RR 0.861 [0.806,0.918] raw u/n 19.6/15.7%% N=30,233
+
+===== TRACEABILITY =====
+  raw %% by exposure (users / non-users):
+     in-person (visit)  63.6 / 49.5
+     remote (>=1)       35.5 / 43.1
+     any contact        77.6 / 72.2
+  SHARE focal RR 0.887 -> E-value 1.506; CI limit closest to null 0.928 -> E-value 1.368
+  leave-one-country-out focal RR range: 0.880--0.900 (n=26 countries dropped in turn)
