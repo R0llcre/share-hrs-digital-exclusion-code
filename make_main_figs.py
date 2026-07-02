@@ -18,6 +18,9 @@ import matplotlib.pyplot as plt
 OUT = "../../manuscript/figures_pos"
 BLUE, TEAL, ORANGE = "#1f4e79", "#1d8a7a", "#c0562f"
 def r2(v): return str(Decimal(str(v)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+# clean PDF metadata for journal upload (no creation date / tool banner)
+def META(title): return {"Title": title, "Author": "Zihan Zhu, Kairan Shen",
+                         "Creator": "", "Producer": "", "CreationDate": None}
 
 # ---- Figure 1: wave trajectories ----
 share_any = {"x": [2015, 2019, 2021], "rr": [0.973, 0.968, 0.887],
@@ -78,7 +81,8 @@ for ax in (a, b):
     ax.tick_params(labelsize=9)
 plt.tight_layout()
 for ext in ("pdf", "png"):
-    fig.savefig(f"{OUT}/fig1_pretrend.{ext}", dpi=300, bbox_inches="tight")
+    kw = {"metadata": META("Figure 1")} if ext == "pdf" else {}
+    fig.savefig(f"{OUT}/fig1_pretrend.{ext}", dpi=300, bbox_inches="tight", **kw)
 plt.close(fig)
 print("wrote fig1_pretrend.pdf/.png")
 
@@ -118,7 +122,8 @@ ax.set_xlabel("Adjusted during-pandemic in-person contact RR (non-users vs users
 ax.spines[["top", "right", "left"]].set_visible(False); ax.tick_params(left=False, labelsize=9)
 plt.tight_layout()
 for ext in ("pdf", "png"):
-    fig.savefig(f"{OUT}/fig2_gradient.{ext}", dpi=300, bbox_inches="tight")
+    kw = {"metadata": META("Figure 2")} if ext == "pdf" else {}
+    fig.savefig(f"{OUT}/fig2_gradient.{ext}", dpi=300, bbox_inches="tight", **kw)
 plt.close(fig)
 print("wrote fig2_gradient.pdf/.png")
 
