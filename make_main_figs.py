@@ -83,31 +83,34 @@ plt.close(fig)
 print("wrote fig1_pretrend.pdf/.png")
 
 # ---- Figure 2: need gradient ----
-rows = [("By multimorbidity", None, None, None),
-        ("None", 0.827, 0.769, 0.889),
-        ("2+ conditions", 0.927, 0.892, 0.964),
-        ("By age", None, None, None),
-        ("50–64 y", 0.819, 0.753, 0.891),
-        ("65–79 y", 0.905, 0.863, 0.949),
-        ("80+ y", 0.913, 0.865, 0.964)]
+# labels are the half-up 2-dp roundings of the FULL-precision estimates (as recomputed
+# by make_forest_figs.py); rendering f"{r:.2f}" on the 3-dp printed values would
+# double-round 0.905 -> 0.91 although the full-precision RR rounds to 0.90.
+rows = [("By multimorbidity", None, None, None, None),
+        ("None", 0.827, 0.769, 0.889, "0.83"),
+        ("2+ conditions", 0.927, 0.892, 0.964, "0.93"),
+        ("By age", None, None, None, None),
+        ("50–64 y", 0.819, 0.753, 0.891, "0.82"),
+        ("65–79 y", 0.905, 0.863, 0.949, "0.90"),
+        ("80+ y", 0.913, 0.865, 0.964, "0.91")]
 OVERALL = 0.887
 
 fig, ax = plt.subplots(figsize=(7.0, 3.4))
 ys = np.arange(len(rows))[::-1]
 ax.axvline(1.0, color="#999999", lw=0.9, ls="--")
 ax.axvline(OVERALL, color=BLUE, lw=1.0, alpha=0.45)
-for (lab, r, lo, hi), y in zip(rows, ys):
+for (lab, r, lo, hi, vlab), y in zip(rows, ys):
     if r is None:
         ax.text(0.735, y, lab, fontsize=9, fontweight="bold", va="center")
         continue
     ax.errorbar(r, y, xerr=[[r - lo], [hi - r]], fmt="o", color=BLUE, ms=5.5,
                 capsize=2.5, lw=1.4)
-    ax.text(hi + 0.012, y, f"{r:.2f}", va="center", fontsize=9)
+    ax.text(hi + 0.012, y, vlab, va="center", fontsize=9)
 ax.text(OVERALL, len(rows) - 0.35, "overall 0.89", fontsize=8, color=BLUE,
         ha="center", va="bottom", style="italic",
         bbox=dict(fc="white", ec="none", pad=1.0))
 ax.set_yticks(ys)
-ax.set_yticklabels([("" if r is None else lab) for (lab, r, lo, hi) in rows], fontsize=9)
+ax.set_yticklabels([("" if r is None else lab) for (lab, r, lo, hi, vlab) in rows], fontsize=9)
 ax.set_xlim(0.72, 1.06)
 ax.set_xticks([0.75, 0.80, 0.85, 0.90, 0.95, 1.00, 1.05])
 ax.set_xlabel("Adjusted during-pandemic in-person contact RR (non-users vs users), SHARE",
