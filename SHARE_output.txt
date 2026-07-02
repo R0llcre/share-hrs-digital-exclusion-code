@@ -12,6 +12,7 @@
 == SHARE selection/weighting sensitivity (M2) ==
   unweighted M2 RR 0.887; SCS2-calibrated-weighted RR 0.867 [0.780,0.965] (N=30,242)
   IPW for SCS2 participation: RR 0.890 [0.855,0.926] (N=30,244)
+  IPW weight distribution (truncated at 99th pct): mean 1.64, median 1.46, p99 4.21, max 4.21
 == SHARE pre-pandemic exposure-timing sensitivity (focal M2) ==
   excl W8 interviews from Mar 2020 onward: RR 0.890 [0.851,0.930] N=27,952 (dropped 2,292)
 == SHARE multimorbidity-stratified absolute RD (M2 standardisation) ==
@@ -94,8 +95,8 @@
   adj-std %% remote     users 40.6 / non-users 36.5  RD -4.2pp
   adj-std %% any        users 77.6 / non-users 72.2  RD -5.4pp
 == SHARE attrition: SCS2-included vs not-included (W8 exposure-known) ==
-  included: N=30,244 age=70.3 non-user%=43 edu-lo%=32 SRH=3.18 multimorbid%=53
-  not included: N=21,473 age=70.1 non-user%=42 edu-lo%=33 SRH=3.25 multimorbid%=52
+  included: N=30,244 age=70.3 female%=59 non-user%=43 edu-lo%=32 SRH=3.18 EURO-D=2.34 anyADLIADL%=19 multimorbid%=53 baseDocv=6.8
+  not included: N=21,473 age=70.1 female%=54 non-user%=42 edu-lo%=33 SRH=3.25 EURO-D=2.53 anyADLIADL%=27 multimorbid%=52 baseDocv=7.4
 == SHARE extended-confounder sensitivity (focal need-set vs +income+wealth+living-alone) ==
   focal need-set (N=29,888)            RR 0.889 [0.851,0.930]
   +income+wealth (near-full sample)         RR 0.903 [0.866,0.942]

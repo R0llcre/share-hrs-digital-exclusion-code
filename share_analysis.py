@@ -129,6 +129,9 @@ mi = smf.glm(f"visit ~ excl + {fM2}", data=di, family=sm.families.Poisson(),
              cov_type="cluster", cov_kwds={"groups": di["cc"]})
 print(f"  IPW for SCS2 participation: RR {np.exp(mi.params['excl']):.3f} "
       f"[{np.exp(mi.conf_int().loc['excl'][0]):.3f},{np.exp(mi.conf_int().loc['excl'][1]):.3f}] (N={len(di):,})")
+_wt = di["ipw"].clip(upper=di["ipw"].quantile(0.99))
+print(f"  IPW weight distribution (truncated at 99th pct): mean {_wt.mean():.2f}, "
+      f"median {_wt.median():.2f}, p99 {_wt.quantile(0.99):.2f}, max {_wt.max():.2f}")
 
 # pre-pandemic exposure-timing sensitivity: exclude Wave-8 interviews from March 2020 onward
 # (the great majority of 2020-calendar-year W8 interviews were Jan-Feb, i.e. still pre-pandemic)
@@ -321,7 +324,11 @@ print("== SHARE attrition: SCS2-included vs not-included (W8 exposure-known) =="
 _ins=set(dd["mergeid"])
 _a=b3.copy(); _a["inSCS2"]=_a["mergeid"].isin(_ins)
 for _k,_sub in [("included",_a[_a.inSCS2]),("not included",_a[~_a.inSCS2])]:
-    print(f"  {_k}: N={len(_sub):,} age={_sub.age.mean():.1f} non-user%={_sub.excl.mean()*100:.0f} edu-lo%={(_sub.edu3=='lo').mean()*100:.0f} SRH={_sub.sphus.mean():.2f} multimorbid%={(_sub.chronicw8>=2).mean()*100:.0f}")
+    print(f"  {_k}: N={len(_sub):,} age={_sub.age.mean():.1f} female%={(_sub.sex=='f').mean()*100:.0f} "
+          f"non-user%={_sub.excl.mean()*100:.0f} edu-lo%={(_sub.edu3=='lo').mean()*100:.0f} "
+          f"SRH={_sub.sphus.mean():.2f} EURO-D={_sub.eurod.mean():.2f} "
+          f"anyADLIADL%={((_sub.adl>0)|(_sub.iadl>0)).mean()*100:.0f} "
+          f"multimorbid%={(_sub.chronicw8>=2).mean()*100:.0f} baseDocv={_sub.docv8.mean():.1f}")
 
 # --- (C) Extended-confounder sensitivity: +income +wealth +living-alone ---
 print("== SHARE extended-confounder sensitivity (focal need-set vs +income+wealth+living-alone) ==")
