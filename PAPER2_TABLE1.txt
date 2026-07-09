@@ -1,0 +1,23 @@
+PAPER 2 TABLE 1: Wave-8 baseline characteristics by pre-pandemic internet use
+  users n=22,588 | non-users n=14,790  (analytic sample 37,378)
+  row                                        users   non-users     SMD
+  Age, mean (SD)                         66.8 (8.3)   73.4 (9.1)    0.76
+  Chronic conditions, mean (SD)           1.6 (1.5)    2.2 (1.7)    0.36
+  EURO-D score, mean (SD)                 2.0 (1.9)    2.7 (2.4)    0.32
+  Doctor visits 2019, mean (SD)           6.3 (9.6)    7.2 (11.0)    0.08
+  Age 50-64, %                               41.4%       18.1%    0.53
+  Age 65-79, %                               51.4%       54.4%    0.06
+  Age 80+, %                                  7.2%       27.5%    0.56
+  Female, %                                  56.5%       60.2%    0.07
+  Education low (ISCED 0-2), %               17.2%       48.6%    0.71
+  Education medium (ISCED 3-4), %            47.6%       43.0%    0.09
+  Education high (ISCED 5-6), %              35.2%        8.4%    0.69
+  Fair/poor self-rated health, %             26.6%       50.1%    0.50
+  2+ chronic conditions, %                   45.2%       60.4%    0.31
+  EURO-D >= 4, %                             20.3%       32.1%    0.27
+  Any ADL limitation, %                       6.1%       13.2%    0.24
+  Any IADL limitation, %                      9.5%       24.3%    0.40
+  Any ADL or IADL limitation, %              12.1%       27.3%    0.39
+  Any doctor visit 2019, %                   90.8%       89.6%    0.04
+  4+ doctor visits 2019, %                   57.0%       63.3%    0.13
+  Hospital stay 2019, %                      12.7%       16.1%    0.10

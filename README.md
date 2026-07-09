@@ -1,8 +1,13 @@
-# Analysis code — Digital Exclusion and Doctor Contact During COVID-19 Among Adults Aged 50 and Older: Pandemic-Specific Evidence From SHARE With HRS Context
+# Analysis code — digital exclusion and doctor contact in ageing cohorts (SHARE/HRS)
 
 Authors: Zihan Zhu (Columbia University); Kairan Shen (University of California, Berkeley; corresponding, kairanshen@berkeley.edu)
 
-This repository contains the analysis code that reproduces every estimate in the manuscript and supplement (saved outputs included). It is an observational secondary analysis of two ageing cohorts (SHARE and HRS).
+This repository contains the analysis code that reproduces every estimate in two related manuscripts and their supplements (saved outputs included):
+
+1. **Paper 1** — *Digital Exclusion and Doctor Contact During COVID-19 Among Adults Aged 50 and Older: Pandemic-Specific Evidence From SHARE With HRS Context* (`share_analysis.py`, `hrs_analysis.py`, `wild_bootstrap.py`, `make_main_figs.py`, `make_forest_figs.py`).
+2. **Paper 2** — *Internet Non-Use and Doctor Contact After the Acute Phase of COVID-19 Among Adults Aged 50 and Older: Like-for-Like Evidence From SHARE* (`paper2_*.py`; see the Paper 2 section below).
+
+Both are observational secondary analyses of ageing cohorts (SHARE and HRS).
 
 ## ⚠️ Data are NOT included
 The raw SHARE and HRS data **cannot be redistributed** under their data-use agreements. This repository contains **code and saved output logs only**. To reproduce the results, obtain the data yourself (free, on registration) from the official providers and point the scripts at your local copies:
@@ -22,6 +27,20 @@ The raw SHARE and HRS data **cannot be redistributed** under their data-use agre
 | `make_forest_figs.py` | Recomputes the subgroup, per-country (incl. the DerSimonian–Laird random-effects pooled estimate) and leave-one-country-out forest figures and writes the supplement figure PDFs/PNGs. |
 | `make_main_figs.py` | Draws the main-text figures (wave trajectories; need gradient) and the ladder/temporal supplement figures from the published estimates in the saved outputs. |
 | `SHARE_output.txt`, `HRS_output.txt`, `WILD_BOOTSTRAP_RESULTS.txt` | Saved outputs (the reproduced numbers, regenerated 2026-07-01). |
+
+## Paper 2 files (SHARE Wave 9 like-for-like persistence analysis)
+
+Additional SHARE modules used: Wave 9 `hc` (doctor visits `hc602_`), `it` (internet use `it004_`), `cv_r` (interview date, vital status), `xt` (end-of-life interviews, year of death), `gv_weights` (`cciw_w9`). Dataset DOI added: 10.6103/SHARE.w9.900.
+
+| File | What it does |
+|------|--------------|
+| `paper2_feasibility.py` | Initial feasibility run: Wave-9 adjusted RRs, like-for-like W8→W9 fully-interacted period contrasts, digital-transition crosstab. |
+| `paper2_analysis.py` | Main analysis: flow with complete-case decomposition; period-specific RRs and contrasts from the fully-interacted model (incl. the within-survivor and full-pool 2019 baselines); one-sided equivalence tests; fieldwork-timing dose-response; retention/mortality decomposition, mortality RR, IPW-for-retention, extreme-case bounds; digital-transition groups and stable-exposure sensitivity; country heterogeneity (DerSimonian–Laird, leave-one-country-out); Corona-Survey in-person and total-contact bridges inside the analytic sample; threshold ladder; calibrated-weight sensitivity. Writes `PAPER2_ANALYSIS.txt`. |
+| `paper2_bootstrap.py` | Restricted wild cluster bootstrap-t (Rademacher, B=9,999, 26 clusters) on the Wave-9 level risk differences and the two period-interaction contrasts. Writes `PAPER2_BOOTSTRAP.txt`. |
+| `paper2_figdata.py` | Full-precision (4 dp) estimates behind every figure value, incl. the 2015 (Wave 6) anchors. Writes `PAPER2_FIGDATA.txt`. |
+| `paper2_table1.py` | Table 1 baseline characteristics by exposure with standardised mean differences. Writes `PAPER2_TABLE1.txt`. |
+| `paper2_make_figs.py` | Draws the Paper 2 figures (same-instrument trajectory with the flagged in-person anchor; fieldwork-timing dose-response) from the committed estimates. |
+| `PAPER2_*.txt` | Saved outputs (regenerated 2026-07-02). |
 
 ## Environment
 Python 3.x with: `pandas`, `numpy`, `pyreadstat`, `statsmodels`, `scipy`, `patsy`.

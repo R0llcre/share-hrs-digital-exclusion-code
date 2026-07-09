@@ -1,0 +1,96 @@
+================================================================================================
+PAPER 2 MAIN ANALYSIS -- SHARE W9 like-for-like reversion (run 2026-07-02)
+================================================================================================
+S0 FLOW: W8 exposure-known 50+ (excl. Israel) 51,717 -> appears in W9 hc module 39,083
+        -> covariate-complete analytic sample 37,378
+   complete-case decomposition of the 1,705 excluded: 518 missing the W9 outcome; 1,187 outcome present but missing a focal covariate
+   4+ prevalence check: W9 57.7% vs W8-in-sample 59.5% (matched baselines)
+   any-visit:           W9 88.8% vs W8-in-sample 90.3%
+
+== S1 CORE ESTIMATES ==
+  cross-sectional W9 any doctor visit : RR 0.965 [0.953,0.977] (n=37,378)
+  cross-sectional W9 4+ doctor visits: RR 0.945 [0.930,0.960] (n=37,378)
+  any-visit fully-interacted model (n=37,378):
+    2019 RR within W9 survivors (S5): 0.960 [0.951,0.970]   <- companion (n=30,244, SCS2-conditioned) anchors: 0.968 / 0.941
+    2021-22 RR (same model):          0.965 [0.953,0.977]
+    ratio-of-RR (period contrast):    1.005 [0.991,1.018] p=0.51
+  4+-visit  fully-interacted model (n=37,378):
+    2019 RR within W9 survivors (S5): 0.943 [0.922,0.964]   <- companion (n=30,244, SCS2-conditioned) anchors: 0.968 / 0.941
+    2021-22 RR (same model):          0.945 [0.930,0.960]
+    ratio-of-RR (period contrast):    1.002 [0.981,1.023] p=0.85
+
+== S2 EQUIVALENCE (one-sided z-tests on log ratio-of-RR; H0: theta <= margin) ==
+   margins: 0.92/0.94 = full persistence of the IN-PERSON pandemic contrasts;
+   0.959/0.969 = half persistence (log scale); 0.960 = full persistence of the
+   TOTAL-CONTACT-implied widening (0.93/0.968); 0.980 = half of that (primary).
+  any-visit: H0 theta<=0.920 rejected? z=12.88, one-sided p=0.00e+00
+  any-visit: H0 theta<=0.959 rejected? z= 6.79, one-sided p=5.50e-12
+  any-visit: H0 theta<=0.960 rejected? z= 6.64, one-sided p=1.57e-11
+  any-visit: H0 theta<=0.980 rejected? z= 3.62, one-sided p=1.48e-04
+  any-visit: one-sided 95% lower bound on theta = 0.993 (equivalence boundary)
+  4+-visit : H0 theta<=0.940 rejected? z= 5.98, one-sided p=1.15e-09
+  4+-visit : H0 theta<=0.969 rejected? z= 3.14, one-sided p=8.56e-04
+  4+-visit : H0 theta<=0.980 rejected? z= 2.08, one-sided p=1.87e-02
+  4+-visit : one-sided 95% lower bound on theta = 0.985 (equivalence boundary)
+
+== S3 INTERVIEW-TIMING DOSE-RESPONSE (W9 fieldwork Oct 2021 - late 2022) ==
+  interview date known: 37,378/37,378; months-since-Oct-2021: p10 1, median 4, p90 7
+  2021Q4: n=11,661 (24 countries) | W9 any RR 0.985 [0.965,1.006] | contrast 1.021 [0.996,1.048]
+  2022Q1: n=15,224 (24 countries) | W9 any RR 0.955 [0.931,0.978] | contrast 0.995 [0.973,1.018]
+  2022Q2: n=8,635 (25 countries) | W9 any RR 0.963 [0.947,0.981] | contrast 1.005 [0.980,1.031]
+  2022Q3+: n=1,858 (23 countries) | W9 any RR 0.941 [0.909,0.974] | contrast 0.977 [0.938,1.018]
+  early(Oct21-Mar22): n=26,885 | any RR 0.968 [0.952,0.983] contrast 1.006 [0.990,1.023] | 4+ RR 0.946 contrast 0.997 [0.977,1.018]
+  late(Apr22+)      : n=10,493 | any RR 0.957 [0.941,0.973] contrast 0.999 [0.974,1.025] | 4+ RR 0.939 contrast 1.014 [0.966,1.066]
+  continuous: excl x (per 6 months of fieldwork) RR-ratio 0.977 [0.952,1.001] p=0.06
+  NOTE: timing strata are country-confounded (staggered fieldwork); country FE kept within strata.
+
+== S4 RETENTION AND MORTALITY (base: W8-covariate-complete pool) ==
+  pool n=49,408 (W8 covariate-complete out of 51,717)
+  alive-nonresponse/incomplete   n=   877  among non-users   2.2%  among users   1.5%
+  analytic                       n=37,378  among non-users  72.5%  among users  77.9%
+  deceased                       n= 1,233  among non-users   4.7%  among users   1.0%
+  not-in-W9-coverscreen          n= 9,920  among non-users  20.7%  among users  19.6%
+  adjusted mortality RR (non-user vs user, M2): 1.891 [1.636,2.185]
+  2019 any doctor visit  RR on the FULL W8 covariate-complete pool (n=49,408): 0.9638 [0.9555,0.9722]
+  2019 4+ doctor visits RR on the FULL W8 covariate-complete pool (n=49,408): 0.9414 [0.9236,0.9595]
+  deaths by year (xt): 2019: n=21, non-user 86%; 2020: n=310, non-user 77%; 2021: n=658, non-user 77%; 2022: n=208, non-user 77%
+  IPW distribution: mean 1.02, median 0.98, max 1.95
+  IPW-weighted any-visit: W9 RR 0.966 [0.954,0.978] | contrast 1.005 [0.992,1.018]
+  IPW-weighted 4+-visit : W9 RR 0.944 [0.929,0.959] | contrast 1.001 [0.980,1.021]
+  extreme bound [alive lost only: non-users 0 visits, users all visit (worst for reversion)]: raw W9 any-visit RR = 0.725
+  extreme bound [alive lost only: non-users all visit, users 0 visits (best)]: raw W9 any-visit RR = 1.285
+  extreme bound [alive lost + deceased: non-users 0, users 1 (most extreme)]: raw W9 any-visit RR = 0.691
+  (observed raw W9 any-visit RR = 0.977; bounds are diagnostic extremes, not estimates)
+
+== S6 EXPOSURE DRIFT (W8 -> W9 internet transitions inside analytic sample) ==
+  group                  n    any%     4+%   adjusted RR vs stable-user (any | 4+)
+  stable-user       20,757    89.8    56.3   1.00 (ref) | 1.00 (ref)
+  stable-nonuser    12,205    87.6    60.5   0.957 [0.942,0.972] | 0.927 [0.904,0.951]
+  catch-up           2,582    87.1    56.7   0.976 [0.961,0.991] | 0.976 [0.936,1.017]
+  drop-off           1,829    87.8    56.3   0.973 [0.956,0.991] | 0.948 [0.891,1.009]
+  stable-exposure only (undiluted): any RR 0.958 [0.943,0.973], 4+ RR 0.931 [0.908,0.955]
+    contrasts: any 1.002 [0.986,1.018]; 4+ 0.991 [0.961,1.022]
+
+== S7 COUNTRY HETEROGENEITY (W9 any-visit RR) ==
+  26 countries | below 1: 23 | range 0.89-1.03
+  FE pooled 0.972; DL-RE pooled 0.970 [0.960,0.981]; Q=38.5 (df=25, p=0.04); I2=35%; tau2=0.0002
+  LOCO on the any-visit period contrast (26 refits):
+  LOCO range 1.001 (drop 63) - 1.007 (drop 19)  [full 1.005]
+
+== S8 SCS2 BRIDGE: in-person gap re-estimated INSIDE the W9 analytic sample ==
+  SCS2 (summer 2021) in-person visit RR within overlap (n=27,131): 0.887 [0.847,0.929]   <- companion full-sample 0.887
+  SCS2 total contact (in-person or remote) RR within overlap (n=26,923): 0.933 [0.912,0.955]   <- companion full-sample 0.93
+  same overlap sample, W8->W9 hc602 contrast: 1.001 [0.987,1.015]
+  => if the in-person gap holds inside the very sample showing reversion, survivor
+     composition cannot explain the reversion (challenge replicated within-sample).
+
+== S9 THRESHOLD LADDER (W9 RRs; W8-in-sample prevalence matched) ==
+  >=1 visits: W9 prev 88.8% (W8 90.3%)  RR 0.965 [0.953,0.977]
+  >=2 visits: W9 prev 79.7% (W8 80.8%)  RR 0.966 [0.951,0.982]
+  >=3 visits: W9 prev 67.6% (W8 68.8%)  RR 0.954 [0.939,0.969]
+  >=4 visits: W9 prev 57.7% (W8 59.5%)  RR 0.945 [0.930,0.960]
+  >=6 visits: W9 prev 37.8% (W8 40.2%)  RR 0.923 [0.889,0.959]
+
+== S10 CALIBRATED CROSS-SECTIONAL WEIGHT (cciw_w9) SENSITIVITY ==
+  weighted any-visit (n=37,375): W9 RR 0.963 [0.940,0.987] | contrast 1.017 [0.993,1.043]
+  weighted 4+-visit  (n=37,375): W9 RR 0.923 [0.889,0.958] | contrast 0.998 [0.965,1.031]

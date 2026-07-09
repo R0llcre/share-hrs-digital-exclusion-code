@@ -1,0 +1,10 @@
+PAPER 2 FIGURE DATA: all Figure-1/2 point estimates at 4dp (half-up 2dp labels
+are taken from THESE full-precision values, never re-rounded from 3dp prints)
+W9 analytic n=37,378; with W6 outcome n=22,931
+  2015 any doctor visit: RR 0.9749 [0.9631,0.9869] (n=22,931; prev 88.6%)
+  2015 4+ doctor visits: RR 1.0106 [0.9861,1.0358] (n=22,931; prev 54.6%)
+  2019 any doctor visit: RR 0.9604 [0.9507,0.9703] (n=37,378)
+  2019 4+ doctor visits: RR 0.9429 [0.9225,0.9639] (n=37,378)
+  2021-22 any doctor visit: RR 0.9648 [0.9525,0.9772] (n=37,378)
+  2021-22 4+ doctor visits: RR 0.9449 [0.9305,0.9595] (n=37,378)
+  2021 in-person (SCS2 bridge): RR 0.8871 [0.8471,0.9290] (n=27,131)
